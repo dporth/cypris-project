@@ -1,0 +1,7 @@
+{
+  "/v3/**": {
+    "target": "https://api.core.ac.uk",
+    "secure": true,
+    "changeOrigin": true
+  }
+}

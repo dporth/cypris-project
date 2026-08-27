@@ -1,0 +1,36 @@
+<section class="chart-card" aria-labelledby="publication-chart-title">
+  <div class="chart-card__header">
+    <div>
+      <p class="eyebrow">Results</p>
+      <h2 id="publication-chart-title">Publications by year</h2>
+    </div>
+    @if (papers().length > 0) {
+      <span class="result-pill">{{ papers().length }} papers</span>
+    }
+  </div>
+
+  @if (!hasSearched()) {
+    <div class="empty-chart">
+      <div class="empty-chart__icon" aria-hidden="true">⌁</div>
+      <p>Run a search to populate the chart.</p>
+    </div>
+  } @else if (buckets().length === 0) {
+    <div class="empty-chart">
+      <div class="empty-chart__icon" aria-hidden="true">—</div>
+      <p>The returned papers do not contain usable data.</p>
+    </div>
+  } @else {
+    <div class="bar-chart" role="img" aria-label="Horizontal bar chart of returned papers grouped by publication year">
+      @for (bucket of buckets(); track bucket.year) {
+        <div class="bar-row">
+          <span class="bar-label">{{ bucket.year }}</span>
+          <div class="bar-track">
+            <div class="bar-fill" [style.width.%]="barWidth(bucket.count)"></div>
+          </div>
+          <span class="bar-value">{{ bucket.count }}</span>
+        </div>
+      }
+    </div>
+    <p class="chart-note">Shows up to the 12 most recent publication years represented on the current result page.</p>
+  }
+</section>

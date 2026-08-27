@@ -1,0 +1,190 @@
+<header class="site-header">
+  <div class="shell site-header__inner">
+    <a class="brand" href="#" aria-label="Mini Cypris home">
+      <span class="brand-mark" aria-hidden="true">C</span>
+      <span>
+        <strong>Cypris</strong>
+        <small>Search the Core API</small>
+      </span>
+    </a>
+    <a class="api-link" href="https://core.ac.uk/" target="_blank" rel="noopener noreferrer">
+      Data by CORE
+      <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="shell hero__grid">
+      <div class="hero__copy">
+        <p class="kicker">Developed by...</p>
+        <h1>Desmond<br /><span>Porth</span></h1>
+        <p class="hero__description">
+          Thank you Cypris for the opportunity.
+        </p>
+      </div>
+
+      <div class="search-panel">
+        <form (ngSubmit)="search()">
+          <label for="research-query">Boolean Keyword Search</label>
+          <div class="search-box">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <input
+              id="research-query"
+              name="researchQuery"
+              [(ngModel)]="query"
+              type="search"
+              autocomplete="off"
+              placeholder="e.g. drone AND (package OR delivery)"
+              aria-describedby="search-help"
+            />
+            <button class="primary-button" type="submit" [disabled]="loading() || !query.trim()">
+              @if (loading()) {
+                <span class="spinner" aria-hidden="true"></span>
+                Searching
+              } @else {
+                Search
+              }
+            </button>
+          </div>
+          <div class="search-options">
+            <p id="search-help">Supports AND, OR, NOT, parentheses, phrases, and CORE field syntax.</p>
+            <label class="count-field" for="result-count">
+              Results
+              <input
+                id="result-count"
+                name="resultCount"
+                [(ngModel)]="pageSize"
+                (change)="pageSizeChanged()"
+                type="number"
+                min="1"
+                max="100"
+                inputmode="numeric"
+              />
+            </label>
+          </div>
+        </form>
+
+        <div class="examples">
+          <span>Try:</span>
+          @for (example of examples; track example) {
+            <button type="button" (click)="useExample(example)">{{ example }}</button>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="shell dashboard" aria-label="Search overview">
+    <app-publication-chart [papers]="works()" [hasSearched]="hasSearched()" />
+
+    <aside class="insight-card">
+      <p class="section-eyebrow">Search workspace</p>
+      <h2>Query context</h2>
+
+      @if (hasSearched() && !errorMessage()) {
+        <dl class="metrics">
+          <div>
+            <dt>Matches</dt>
+            <dd>{{ totalHits() }}</dd>
+          </div>
+          <div>
+            <dt>Loaded</dt>
+            <dd>{{ works().length }}</dd>
+          </div>
+          <div>
+            <dt>Page</dt>
+            <dd>{{ currentPage() }}@if (totalPages() > 0) { / {{ totalPages() }} }</dd>
+          </div>
+        </dl>
+      } @else {
+        <p class="insight-copy">
+          Your filter expression is sent as request data directly to Core's API.
+        </p>
+      }
+
+      @if (searchHistory().length > 0) {
+        <div class="history">
+          <h3>Recent searches</h3>
+          @for (item of searchHistory(); track item) {
+            <button type="button" (click)="useHistoryItem(item)">{{ item }}</button>
+          }
+        </div>
+      }
+    </aside>
+  </section>
+
+  <section class="shell results-section" id="results">
+    <div class="results-header">
+      <div>
+        <p class="section-eyebrow">Search Results</p>
+        <h2>
+          @if (!hasSearched()) {
+            Ready to search
+          } @else if (errorMessage()) {
+            Search unavailable
+          } @else {
+            Paper Objects
+          }
+        </h2>
+        @if (hasSearched() && !errorMessage() && works().length > 0) {
+          <p>
+            Showing {{ firstResultNumber() }}–{{ lastResultNumber() }} of {{ totalHits() }} matches
+            for <strong>“{{ query.trim() }}”</strong>.
+          </p>
+        }
+      </div>
+
+      @if (works().length > 0) {
+        <button class="secondary-button" type="button" (click)="exportCsv()">
+          Export current page CSV
+        </button>
+      }
+    </div>
+
+    @if (errorMessage()) {
+      <div class="state-card state-card--error" role="alert">
+        <strong>Unable to load papers</strong>
+        <p>{{ errorMessage() }}</p>
+      </div>
+    } @else if (loading() && works().length === 0) {
+      <div class="paper-grid" aria-label="Loading search results">
+        @for (item of [1, 2, 3, 4, 5, 6]; track item) {
+          <div class="skeleton-card" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </div>
+        }
+      </div>
+    } @else if (!hasSearched()) {
+      <div class="state-card">
+        <strong>Start with a research question</strong>
+        <p>Use the search box above.</p>
+      </div>
+    } @else if (works().length === 0) {
+      <div class="state-card">
+        <strong>No papers matched this query</strong>
+        <p>Broaden the keywords, remove a condition, or try an OR expression.</p>
+      </div>
+    } @else {
+      <div class="paper-grid" [class.paper-grid--loading]="loading()">
+        @for (paper of works(); track paper.id ?? $index) {
+          <app-paper-card [paper]="paper" />
+        }
+      </div>
+
+      <nav class="pagination" aria-label="Search result pages">
+        <button type="button" (click)="previousPage()" [disabled]="!canGoPrevious()">← Previous</button>
+        <span>Page {{ currentPage() }}@if (totalPages() > 0) { of {{ totalPages() }} }</span>
+        <button type="button" (click)="nextPage()" [disabled]="!canGoNext()">Next →</button>
+      </nav>
+    }
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="shell">
+    <span>Cypris Interview Project</span>
+    <span>Desmond Porth 2026</span>
+  </div>
+</footer>

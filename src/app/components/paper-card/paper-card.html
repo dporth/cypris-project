@@ -1,0 +1,29 @@
+<article class="paper-card">
+  <div class="paper-card__body">
+    <div class="paper-card__eyebrow">
+      <span>{{ publicationMeta() }}</span>
+      @if (paper().language) {
+        <span class="language-badge">{{ paper().language }}</span>
+      }
+    </div>
+
+    <h3>{{ paper().title || 'Untitled research paper' }}</h3>
+    <p class="authors">{{ authors() }}</p>
+    <p class="abstract">{{ abstract() }}</p>
+  </div>
+
+  <footer class="paper-card__footer">
+    @if (paper().doi) {
+      <span class="doi">DOI {{ paper().doi }}</span>
+    } @else {
+      <span class="doi">CORE record {{ paper().id || '—' }}</span>
+    }
+
+    @if (primaryUrl(); as url) {
+      <a [href]="url" target="_blank" rel="noopener noreferrer">
+        Open paper
+        <span aria-hidden="true">↗</span>
+      </a>
+    }
+  </footer>
+</article>

@@ -1,0 +1,47 @@
+:root {
+  --hero: #122b2d;
+  --ink: #1e2d31;
+  --ink-soft: #43565b;
+  --muted: #75868a;
+  --accent: #8bc9b9;
+  --accent-light: #b7e3d5;
+  --accent-dark: #2c7267;
+  --accent-soft: #e4f4ef;
+  --surface: #ffffff;
+  --surface-soft: #f7f9f8;
+  --border: #e2e8e6;
+  --border-strong: #ced8d5;
+  color-scheme: light;
+  font-family: Inter, ui-sans-serif;
+  background: #f5f7f6;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background: #f5f7f6;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 3px solid rgb(139 201 185 / 42%);
+  outline-offset: 2px;
+}
