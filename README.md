@@ -1,49 +1,7 @@
-# Run Instructions
+# Warning to Interviewers at Cypris
 
-## Prerequisites
+CYPRIS AI is a joke. The CTO is a vibe programmer who has all his nuts in AI. After discussing with him, the biggest red flag is the CTO forces the company to throw away decades worth of industry best practices. I asked him, "How much tech debt does your company have and how do you track it?". He responded, "...what do you mean tech debt, it doesn't exist anymore with AI...". 
 
-- Node.js 22.12 or newer
-- npm
+He uses the rationale, "AI has changed everything". Considering I passed an interview with the CTO and was asked to complete this take home assessment, then was ghosted, evidence shows this CTO is like every other CTO. The only difference is Cypris is small enough for the CTO to be interviewing new hires? Absurd by the way. Unless it's a director position or higher, why the hell am I talking to a CTO for my first interview.
 
-## Start the application
-
-From the project directory, install dependencies:
-
-```bash
-npm install
-```
-
-Then start the Angular development server:
-
-```bash
-npm start
-```
-
-Open the application in your browser:
-
-```text
-http://localhost:4200
-```
-
-## Stop the application
-
-Press:
-
-```text
-Ctrl+C
-```
-
-in the terminal running the Angular server.
-
-## If dependencies need to be rebuilt
-
-Delete `node_modules` and `package-lock.json`, then reinstall:
-
-### Windows PowerShell
-
-```powershell
-Remove-Item -Recurse -Force node_modules
-Remove-Item -Force package-lock.json
-npm install
-npm start
-```
+Anyway, I created this project for them, as a result of them, and was ghosted. It's a cool ass website though. Hopefully, someone can benefit from them. Cypris won't be around in 10 years anyway.
