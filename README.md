@@ -12,3 +12,5 @@ THE FUCK? YIKES
 
 
 /s https://cypris.ai/
+
+I hope I can help others by posting their "take home assessment". They love AI so maybe just spend 5 minutes using AI to develop an application.
