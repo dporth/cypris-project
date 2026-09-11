@@ -11,4 +11,4 @@ Email from Chris, CTO of Cypris.ai
 >There is no time limit to complete this project, but how long you take weighed against the quality that is produced, will be taken into account.
 
 
-Link to take home assessment, [do this then get ghosted by company](./Software Engineering Project (1).pdf)
+Link to take home assessment, [do this then get ghosted by company](**./Software Engineering Project (1).pdf**)
