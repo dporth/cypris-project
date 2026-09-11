@@ -1,16 +1,14 @@
 # Warning to Interviewers at Cypris
 
-CYPRIS AI is a joke. The CTO is a vibe programmer who has all his nuts in AI. After discussing with him, the biggest red flag is the CTO forces the company to throw away decades worth of industry best practices. I asked him, "How much tech debt does your company have and how do you track it?". He responded, "...what do you mean tech debt, it doesn't exist anymore with AI...we don't track it nor make time for it...". 
-
-He uses the rationale, "AI has changed everything". I passed an interview with the CTO and was asked to complete this take home assessment, then was ghosted, evidence shows this CTO is like every other CTO. The only difference is Cypris is small enough for the CTO to be interviewing new hires? Absurd by the way. Unless it's a director position or higher, why the hell am I talking to a CTO for my first interview.
-
-Anyway, I created this project for them, as a result of them, and was ghosted. It's a cool ass website though. Hopefully, someone can benefit from them. Cypris won't be around in 10 years anyway.
-
-THEY DON'T EVEN OWN CYPRIS.COM
-
-THE FUCK? YIKES
-
-
 /s https://cypris.ai/
 
-I hope I can help others by posting their "take home assessment". They love AI so maybe just spend 5 minutes using AI to develop an application.
+I hope I can help others by posting their "take home assessment". They love AI and excuse all industry best practices for generative AI.
+
+Email from Chris, CTO of Cypris.ai
+
+>Congratulations! You’ve made it to the initial project phase of the interview process. The goal of this project is to see what your capabilities are on the job. ?>Please follow the instructions in the attached spec and feel free to reach out to chris@cypris.ai with any further questions.
+>
+>There is no time limit to complete this project, but how long you take weighed against the quality that is produced, will be taken into account.
+
+
+Link to take home assessment, 
